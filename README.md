@@ -5,7 +5,7 @@ flask 1.1.2
 Werkzeug 1.0.1
 
 # 요구 패키지
-pip install -r requirements.trxt
+pip install -r requirements.txt
 
 # On Windows
 1. cd project root directory
