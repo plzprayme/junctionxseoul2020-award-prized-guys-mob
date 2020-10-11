@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+
+
 from flask import Flask
 from sqlalchemy import create_engine, text
 from flask import jsonify
@@ -16,7 +19,7 @@ CORS(app)
 @app.route('/')
 def get_areas():
     sql = text('SELECT ar.id, name, latitude, longitude, pred_infected, susceptible, infected, site_area, duration, '
-               'vent_rate, scale,  DATE_FORMAT(MAX(im.history), "%Y년 %m월 %d일") AS date FROM areas AS ar JOIN images '
+               'vent_rate, scale,  DATE_FORMAT(MAX(im.history), "%e, %M, %Y") AS date FROM areas AS ar JOIN images '
                'AS im WHERE ar.id = im.area_id AND im.is_svg = 0 GROUP BY ar.id')
     rows = app.database.execute(sql)
     return jsonify(row2json(rows))
@@ -24,7 +27,7 @@ def get_areas():
 
 @app.route('/area/<id>/images')
 def get_images(id):
-    sql = text('SELECT area_id, DATE_FORMAT(history, "%Y년 %m월 %d일") AS date, image FROM images WHERE '
+    sql = text('SELECT area_id, DATE_FORMAT(history, "%e, %M, %Y") AS date, image FROM images WHERE '
                'area_id = :id AND is_svg = :bool ORDER BY history DESC')
     svg_image = app.database.execute(sql.params(id=id, bool=1))
     area_images = app.database.execute(sql.params(id=id, bool=0))
