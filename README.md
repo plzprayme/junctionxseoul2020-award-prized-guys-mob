@@ -5,11 +5,7 @@ flask 1.1.2
 Werkzeug 1.0.1
 
 # 요구 패키지
-1. flask
-2. sqlalchemy
-3. boto3
-4. mysql-connector-python
-
+pip install -r requirements.trxt
 
 # On Windows
 1. cd project root directory
