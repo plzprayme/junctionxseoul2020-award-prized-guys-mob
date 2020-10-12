@@ -10,5 +10,5 @@ ubuntu 기준 `mysql` 에 `root` 의 `plugin` 이  `auth_token` 로 설정되어
 `python app.py`
  
 ## Run On Background
-`sudo nohup python app1c.py > log.txt 2>&1 &`  
+`sudo nohup python app.py > log.txt 2>&1 &`  
 [참고문서](https://stackoverflow.com/questions/36465899/how-to-run-flask-server-in-the-background?rq=1)
