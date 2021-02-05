@@ -7,11 +7,10 @@ from flask_cors import CORS
 from row_to_json import row2json
 
 app = Flask(__name__)
+CORS(app)
 app.config.from_pyfile('config.py')
 
 database = create_engine(app.config['DB_URL'], encoding='utf8')
-
-CORS(app)
 
 
 @app.route('/')
